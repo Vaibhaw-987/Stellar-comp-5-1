@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { api } from "../lib/api";
 import { useWallet } from "../lib/useWallet";
 import { Button, Card } from "../components/ui";
-import "./Register.css";
+import "./Register.css"; 
 
 export function Register() {
   const { onChainId } = useParams<{ onChainId: string }>();
