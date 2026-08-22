@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { AuthProvider } from "./lib/AuthContext";
 import { initObservability } from "./lib/observability";
-import "./styles/global.css";
+import "./styles/global.css"; 
 
 initObservability();
 
