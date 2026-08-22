@@ -2,7 +2,7 @@
   padding: var(--space-8) var(--space-5) var(--space-9);
 }
 
-.dashboard__head {
+.dashboard__head { 
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
