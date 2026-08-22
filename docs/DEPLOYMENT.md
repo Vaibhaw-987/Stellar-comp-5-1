@@ -4,7 +4,7 @@ These steps are for you to run locally/in CI — they require the Rust +
 Soroban toolchain, which isn't available in the sandbox this project was
 scaffolded in. Nothing here has been executed yet; the contract has been
 written and unit-tested in source but not yet compiled or deployed.
-
+ 
 ## 1. Install prerequisites
 
 ```bash
