@@ -1,6 +1,6 @@
 # User Feedback Summary
 
-This document provides a summary of the feedback collected from 12 early-access users (beneficiaries and organizations) during the initial testing phase of the AidBridge platform on the Stellar Testnet.
+This document provides a summary of the feedback collected from 12 early-access users (beneficiaries and organizations) during the initial testing phase of the AidBridge platform on the Stellar Testnet. 
 
 ## Overall Satisfaction
 * **Average Rating:** 4.4 / 5.0
