@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useWallet } from "../lib/useWallet";
 import { Button, WalletBadge } from "./ui";
 import { useState, useEffect } from "react";
-import "./Header.css";
+import "./Header.css"; 
 
 export function Header() {
   const { connected, publicKey, balance, connecting, connect, disconnect, error } = useWallet();
