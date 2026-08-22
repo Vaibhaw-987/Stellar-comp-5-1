@@ -4,7 +4,7 @@ import "./Home.css";
 
 export function Home() {
   return (
-    <div>
+    <div> 
       <section className="hero">
         <div className="container hero__inner">
           <div className="hero__copy">
