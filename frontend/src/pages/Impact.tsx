@@ -8,7 +8,7 @@ import "./Impact.css";
 interface FeedbackSummary {
   count: number;
   averageRating: number;
-}
+} 
 
 export function Impact() {
   const [interactions, setInteractions] = useState<InteractionSummary | null>(null);
