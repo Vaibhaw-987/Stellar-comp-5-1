@@ -3,7 +3,7 @@ resolver = "2"
 members = ["aid-distribution"]
 
 [workspace.package]
-edition = "2021"
+edition = "2021" 
 
 [profile.release]
 overflow-checks = true
