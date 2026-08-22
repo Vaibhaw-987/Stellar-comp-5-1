@@ -1,7 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useAuth } from "../lib/AuthContext";
 import { api } from "../lib/api";
-import type { ProgramMeta, BeneficiaryRecord } from "../lib/types";
+import type { ProgramMeta, BeneficiaryRecord } from "../lib/types"; 
 import { useWallet } from "../lib/useWallet";
 import { invokeContract, CONTRACT_ID } from "../lib/contract"; 
 import { Button, Card, EmptyState, Loading, StatusPill } from "../components/ui";
