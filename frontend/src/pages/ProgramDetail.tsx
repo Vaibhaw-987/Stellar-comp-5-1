@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { api } from "../lib/api";
 import type { ProgramMeta } from "../lib/types";
-import { useWallet } from "../lib/useWallet";
+import { useWallet } from "../lib/useWallet"; 
 import { invokeContract } from "../lib/contract";
 import { trackEvent } from "../lib/observability";
 import { Button, Card, Loading, StatusPill } from "../components/ui";
