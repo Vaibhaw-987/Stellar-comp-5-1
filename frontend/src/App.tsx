@@ -6,7 +6,7 @@ import { ProgramDetail } from "./pages/ProgramDetail";
 import { Register } from "./pages/Register";
 import { OrgAuth } from "./pages/OrgAuth";
 import { Dashboard } from "./pages/Dashboard";
-import { Impact } from "./pages/Impact";
+import { Impact } from "./pages/Impact"; 
 
 export default function App() {
   return (
