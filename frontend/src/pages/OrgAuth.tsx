@@ -4,7 +4,7 @@ import { api } from "../lib/api";
 import { useAuth } from "../lib/AuthContext";
 import { useWallet } from "../lib/useWallet";
 import type { OrgSession } from "../lib/types";
-import { Button, Card } from "../components/ui";
+import { Button, Card } from "../components/ui"; 
 import "./OrgAuth.css";
 
 export function OrgAuth() {
