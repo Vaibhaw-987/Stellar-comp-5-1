@@ -4,7 +4,7 @@ import { useWallet } from "../lib/useWallet";
 import { Button } from "./ui";
 import "./FeedbackForm.css";
 
-export function FeedbackForm() {
+export function FeedbackForm() { 
   const { publicKey, connect } = useWallet();
   const [rating, setRating] = useState(5);
   const [comment, setComment] = useState("");
