@@ -1,0 +1,108 @@
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { api } from "../lib/api";
+import type { ProgramMeta } from "../lib/types";
+import { Card, EmptyState, Loading, StatusPill } from "../components/ui";
+import "./Programs.css";
+
+export function Programs() {
+  const [programs, setPrograms] = useState<ProgramMeta[] | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState<string>("all");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("newest");
+
+  useEffect(() => {
+    api
+      .get<ProgramMeta[]>("/programs")
+      .then(setPrograms)
+      .catch((err) => setError(err.message));
+  }, []);
+
+  return (
+    <div className="container programs-page">
+      <p className="eyebrow">Active &amp; funded programs</p>
+      <h1 className="programs-page__title">Aid programs on AidBridge</h1>
+      <p className="programs-page__lede">
+        Every program listed here is backed by a funded Soroban contract on
+        Stellar testnet. Allocation, eligibility, and claim rules are
+        enforced at claim time — not by an administrator's discretion.
+      </p>
+
+      {error ? <p className="programs-page__error">{error}</p> : null}
+      {!programs && !error ? <Loading label="Fetching programs" /> : null}
+
+      {programs && programs.length === 0 ? (
+        <EmptyState
+          title="No programs registered yet"
+          body="Organizations can create a program from the dashboard once their Soroban contract is deployed and funded."
+        />
+      ) : null}
+
+      <div style={{ marginBottom: "2rem", display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ marginRight: "1rem", fontWeight: "bold", color: "var(--text)" }}>Filter by Category:</label>
+          <select value={filter} onChange={(e) => setFilter(e.target.value)} style={{ padding: "0.5rem", borderRadius: "4px", backgroundColor: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}>
+            <option value="all">All Categories</option>
+            <option value="flood">Flood</option>
+            <option value="drought">Drought</option>
+            <option value="earthquake">Earthquake</option>
+            <option value="conflict">Conflict</option>
+            <option value="epidemic">Epidemic</option>
+            <option value="cyclone">Cyclone</option>
+            <option value="mental_health">Mental Health</option>
+            <option value="healthcare">Healthcare</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ marginRight: "1rem", fontWeight: "bold", color: "var(--text)" }}>Sort by:</label>
+          <select value={sortBy} onChange={(e) => setSortBy(e.target.value)} style={{ padding: "0.5rem", borderRadius: "4px", backgroundColor: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)" }}>
+            <option value="newest">Newest First</option>
+            <option value="ending_soonest">Ending Soonest</option>
+          </select>
+        </div>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <label style={{ marginRight: "1rem", fontWeight: "bold", color: "var(--text)" }}>Search:</label>
+          <input 
+            type="text" 
+            placeholder="Search programs..." 
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            style={{ padding: "0.5rem", borderRadius: "4px", backgroundColor: "var(--surface)", color: "var(--text)", border: "1px solid var(--border)", minWidth: "250px" }}
+          />
+        </div>
+      </div>
+
+      <div className="programs-grid">
+        {programs
+          ?.filter(p => filter === "all" || p.disasterType === filter)
+          ?.filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()) || p.summary.toLowerCase().includes(searchQuery.toLowerCase()) || p.region.toLowerCase().includes(searchQuery.toLowerCase()))
+          ?.sort((a, b) => {
+             if (sortBy === "ending_soonest") {
+               return (a.claimEnd || 0) - (b.claimEnd || 0); // Assuming claimEnd is available in Meta, fallback to 0
+             }
+             return 0; // Default order
+          })
+          .map((p) => (
+          <Link key={p._id} to={`/programs/${p.onChainId}`} className="programs-grid__link">
+            <Card className="program-card">
+              <div className="program-card__head">
+                <span className="eyebrow">{p.disasterType}</span>
+                <StatusPill status="Active" />
+              </div>
+              <h3>{p.title}</h3>
+              <p className="program-card__region">{p.region}</p>
+              <p className="program-card__summary">{p.summary}</p>
+              <div className="perf-divider" />
+              <div className="program-card__foot mono">
+                <span>#{p.onChainId}</span>
+                <span>{p.tokenSymbol}</span>
+              </div>
+            </Card>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
