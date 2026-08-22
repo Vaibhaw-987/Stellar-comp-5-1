@@ -3,7 +3,7 @@ import "./ui.css";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "signal" | "outline" | "ghost";
-  loading?: boolean;
+  loading?: boolean; 
   children: ReactNode;
 }
 
