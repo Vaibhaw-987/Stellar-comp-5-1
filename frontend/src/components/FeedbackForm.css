@@ -4,7 +4,7 @@
   gap: var(--space-3);
 }
 
-.feedback-form__rating {
+.feedback-form__rating { 
   display: flex;
   gap: var(--space-1);
 }
