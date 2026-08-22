@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button, Card } from "../components/ui";
 import "./Home.css";
 
-export function Home() {
+export function Home() { 
   return (
     <div> 
       <section className="hero">
