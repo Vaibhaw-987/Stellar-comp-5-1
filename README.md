@@ -1,4 +1,4 @@
-# 🚀 AidBridge — Programmable humanitarian aid distribution on Stellar Soroban
+# 🚀 AidBridge — Programmable humanitarian aid distribution on Stellar Soroban 
 
 AidBridge is a production-ready humanitarian aid distribution platform built on Stellar (Soroban). It lets organizations define an aid program's eligibility, per-person allocation, claim window, and claim limits as a smart contract—then fund it and let beneficiaries claim directly from their own Stellar wallets without intermediaries.
 
