@@ -3,7 +3,7 @@ import { useAuth } from "../lib/AuthContext";
 import { api } from "../lib/api";
 import type { ProgramMeta, BeneficiaryRecord } from "../lib/types";
 import { useWallet } from "../lib/useWallet";
-import { invokeContract, CONTRACT_ID } from "../lib/contract";
+import { invokeContract, CONTRACT_ID } from "../lib/contract"; 
 import { Button, Card, EmptyState, Loading, StatusPill } from "../components/ui";
 import { Navigate } from "react-router-dom";
 import "./Dashboard.css";
